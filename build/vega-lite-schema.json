@@ -3013,8 +3013,8 @@
     "ColorGradientFieldDefWithCondition": {
       "$ref": "#/definitions/FieldDefWithCondition%3CMarkPropFieldDef%2C(Gradient%7Cstring%7Cnull)%3E"
     },
-    "ColorGradientValueDefWithCondition": {
-      "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2C(Gradient%7Cstring%7Cnull)%3E"
+    "ColorGradientValueOrSignalWithCondition": {
+      "$ref": "#/definitions/ValueOrSignalWithCondition%3CMarkPropFieldDef%2C(Gradient%7Cstring%7Cnull)%3E"
     },
     "ColorName": {
       "enum": [
@@ -3197,7 +3197,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Color of the marks – either fill or stroke color based on  the `filled` property of mark definition.\nBy default, `color` represents fill color for `\"area\"`, `\"bar\"`, `\"tick\"`,\n`\"text\"`, `\"trail\"`, `\"circle\"`, and `\"square\"` / stroke color for `\"line\"` and `\"point\"`.\n\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_\n1) For fine-grained control over both fill and stroke colors of the marks, please use the `fill` and `stroke` channels. The `fill` or `stroke` encodings have higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified.\n2) See the scale documentation for more information about customizing [color scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme)."
@@ -3222,7 +3222,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Fill color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ The `fill` encoding has higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified."
@@ -3233,7 +3233,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Fill opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `fillOpacity` property."
@@ -3244,7 +3244,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             }
           ],
           "description": "A URL to load upon mouse click."
@@ -3303,7 +3303,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `opacity` property."
@@ -3331,7 +3331,7 @@
               "$ref": "#/definitions/ShapeFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ShapeValueDefWithCondition"
+              "$ref": "#/definitions/ShapeValueOrSignalWithCondition"
             }
           ],
           "description": "Shape of the mark.\n\n1. For `point` marks the supported values include:\n   - plotting shapes: `\"circle\"`, `\"square\"`, `\"cross\"`, `\"diamond\"`, `\"triangle-up\"`, `\"triangle-down\"`, `\"triangle-right\"`, or `\"triangle-left\"`.\n   - the line symbol `\"stroke\"`\n   - centered directional shapes `\"arrow\"`, `\"wedge\"`, or `\"triangle\"`\n   - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)\n\n2. For `geoshape` marks it should be a field definition of the geojson data\n\n__Default value:__ If undefined, the default shape depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#point-config)'s `shape` property. (`\"circle\"` if unset.)"
@@ -3342,7 +3342,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Size of the mark.\n- For `\"point\"`, `\"square\"` and `\"circle\"`, – the symbol size, or pixel area of the mark.\n- For `\"bar\"` and `\"tick\"` – the bar and tick's size.\n- For `\"text\"` – the text's font size.\n- Size is unsupported for `\"line\"`, `\"area\"`, and `\"rect\"`. (Use `\"trail\"` instead of line with varying size)"
@@ -3353,7 +3353,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ The `stroke` encoding has higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified."
@@ -3364,7 +3364,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `strokeOpacity` property."
@@ -3375,7 +3375,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke width of the marks.\n\n__Default value:__ If undefined, the default stroke width depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `strokeWidth` property."
@@ -3386,7 +3386,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/TextValueOrSignalWithCondition"
             }
           ],
           "description": "Text of the `text` mark."
@@ -3397,7 +3397,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             },
             {
               "items": {
@@ -3417,7 +3417,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             }
           ],
           "description": "The URL of an image mark."
@@ -3429,6 +3429,9 @@
             },
             {
               "$ref": "#/definitions/XValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "X coordinates of the marks, or width of horizontal `\"bar\"` and `\"area\"` without specified `x2` or `width`.\n\nThe `value` of this channel can be a number or a string `\"width\"` for the width of the plot."
@@ -3440,6 +3443,9 @@
             },
             {
               "$ref": "#/definitions/XValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "X2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`.\n\nThe `value` of this channel can be a number or a string `\"width\"` for the width of the plot."
@@ -3473,6 +3479,9 @@
             },
             {
               "$ref": "#/definitions/YValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "Y coordinates of the marks, or height of vertical `\"bar\"` and `\"area\"` without specified `y2` or `height`.\n\nThe `value` of this channel can be a number or a string `\"height\"` for the height of the plot."
@@ -3484,6 +3493,9 @@
             },
             {
               "$ref": "#/definitions/YValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "Y2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`.\n\nThe `value` of this channel can be a number or a string `\"height\"` for the height of the plot."
@@ -3570,6 +3582,16 @@
         },
         {
           "$ref": "#/definitions/ConditionalSelection%3CMarkPropFieldDef%3CTypeForShape%3E%3E"
+        }
+      ]
+    },
+    "ConditionalSignalRef": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalPredicate%3CSignalRef%3E"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSelection%3CSignalRef%3E"
         }
       ]
     },
@@ -4086,6 +4108,23 @@
       ],
       "type": "object"
     },
+    "ConditionalPredicate<SignalRef>": {
+      "additionalProperties": false,
+      "properties": {
+        "signal": {
+          "type": "string"
+        },
+        "test": {
+          "$ref": "#/definitions/PredicateComposition",
+          "description": "Predicate for triggering the condition"
+        }
+      },
+      "required": [
+        "signal",
+        "test"
+      ],
+      "type": "object"
+    },
     "ConditionalPredicate<StringFieldDef>": {
       "additionalProperties": false,
       "properties": {
@@ -4599,6 +4638,23 @@
       "required": [
         "selection",
         "type"
+      ],
+      "type": "object"
+    },
+    "ConditionalSelection<SignalRef>": {
+      "additionalProperties": false,
+      "properties": {
+        "selection": {
+          "$ref": "#/definitions/SelectionComposition",
+          "description": "A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose)."
+        },
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection",
+        "signal"
       ],
       "type": "object"
     },
@@ -6180,7 +6236,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Color of the marks – either fill or stroke color based on  the `filled` property of mark definition.\nBy default, `color` represents fill color for `\"area\"`, `\"bar\"`, `\"tick\"`,\n`\"text\"`, `\"trail\"`, `\"circle\"`, and `\"square\"` / stroke color for `\"line\"` and `\"point\"`.\n\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_\n1) For fine-grained control over both fill and stroke colors of the marks, please use the `fill` and `stroke` channels. The `fill` or `stroke` encodings have higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified.\n2) See the scale documentation for more information about customizing [color scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme)."
@@ -6213,7 +6269,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Fill color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ The `fill` encoding has higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified."
@@ -6224,7 +6280,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Fill opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `fillOpacity` property."
@@ -6235,7 +6291,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             }
           ],
           "description": "A URL to load upon mouse click."
@@ -6294,7 +6350,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `opacity` property."
@@ -6326,7 +6382,7 @@
               "$ref": "#/definitions/ShapeFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ShapeValueDefWithCondition"
+              "$ref": "#/definitions/ShapeValueOrSignalWithCondition"
             }
           ],
           "description": "Shape of the mark.\n\n1. For `point` marks the supported values include:\n   - plotting shapes: `\"circle\"`, `\"square\"`, `\"cross\"`, `\"diamond\"`, `\"triangle-up\"`, `\"triangle-down\"`, `\"triangle-right\"`, or `\"triangle-left\"`.\n   - the line symbol `\"stroke\"`\n   - centered directional shapes `\"arrow\"`, `\"wedge\"`, or `\"triangle\"`\n   - a custom [SVG path string](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) (For correct sizing, custom shape paths should be defined within a square bounding box with coordinates ranging from -1 to 1 along both the x and y dimensions.)\n\n2. For `geoshape` marks it should be a field definition of the geojson data\n\n__Default value:__ If undefined, the default shape depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#point-config)'s `shape` property. (`\"circle\"` if unset.)"
@@ -6337,7 +6393,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Size of the mark.\n- For `\"point\"`, `\"square\"` and `\"circle\"`, – the symbol size, or pixel area of the mark.\n- For `\"bar\"` and `\"tick\"` – the bar and tick's size.\n- For `\"text\"` – the text's font size.\n- Size is unsupported for `\"line\"`, `\"area\"`, and `\"rect\"`. (Use `\"trail\"` instead of line with varying size)"
@@ -6348,7 +6404,7 @@
               "$ref": "#/definitions/ColorGradientFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ColorGradientValueDefWithCondition"
+              "$ref": "#/definitions/ColorGradientValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ The `stroke` encoding has higher precedence than `color`, thus may override the `color` encoding if conflicting encodings are specified."
@@ -6359,7 +6415,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke opacity of the marks.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `strokeOpacity` property."
@@ -6370,7 +6426,7 @@
               "$ref": "#/definitions/NumericFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/NumericValueDefWithCondition"
+              "$ref": "#/definitions/NumericValueOrSignalWithCondition"
             }
           ],
           "description": "Stroke width of the marks.\n\n__Default value:__ If undefined, the default stroke width depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `strokeWidth` property."
@@ -6381,7 +6437,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/TextValueOrSignalWithCondition"
             }
           ],
           "description": "Text of the `text` mark."
@@ -6392,7 +6448,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             },
             {
               "items": {
@@ -6412,7 +6468,7 @@
               "$ref": "#/definitions/StringFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/StringValueDefWithCondition"
+              "$ref": "#/definitions/StringValueOrSignalWithCondition"
             }
           ],
           "description": "The URL of an image mark."
@@ -6424,6 +6480,9 @@
             },
             {
               "$ref": "#/definitions/XValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "X coordinates of the marks, or width of horizontal `\"bar\"` and `\"area\"` without specified `x2` or `width`.\n\nThe `value` of this channel can be a number or a string `\"width\"` for the width of the plot."
@@ -6435,6 +6494,9 @@
             },
             {
               "$ref": "#/definitions/XValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "X2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`.\n\nThe `value` of this channel can be a number or a string `\"width\"` for the width of the plot."
@@ -6468,6 +6530,9 @@
             },
             {
               "$ref": "#/definitions/YValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "Y coordinates of the marks, or height of vertical `\"bar\"` and `\"area\"` without specified `y2` or `height`.\n\nThe `value` of this channel can be a number or a string `\"height\"` for the height of the plot."
@@ -6479,6 +6544,9 @@
             },
             {
               "$ref": "#/definitions/YValueDef"
+            },
+            {
+              "$ref": "#/definitions/SignalRef"
             }
           ],
           "description": "Y2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`.\n\nThe `value` of this channel can be a number or a string `\"height\"` for the height of the plot."
@@ -6657,17 +6725,7 @@
           "description": "A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`\"binned\"`).\n\n- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.\n\n- If `\"binned\"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.\n\n__Default value:__ `false`\n\n__See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation."
         },
         "condition": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
-              },
-              "type": "array"
-            }
-          ],
+          "$ref": "#/definitions/ValueOrSignalCondition%3C(Gradient%7Cstring%7Cnull)%3E",
           "description": "One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).\n\n__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)\nsince Vega-Lite only allows at most one encoded field per encoding channel."
         },
         "field": {
@@ -6748,17 +6806,7 @@
           "description": "A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`\"binned\"`).\n\n- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.\n\n- If `\"binned\"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.\n\n__Default value:__ `false`\n\n__See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation."
         },
         "condition": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ConditionalNumberValueDef"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalNumberValueDef"
-              },
-              "type": "array"
-            }
-          ],
+          "$ref": "#/definitions/ValueOrSignalCondition%3Cnumber%3E",
           "description": "One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).\n\n__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)\nsince Vega-Lite only allows at most one encoded field per encoding channel."
         },
         "field": {
@@ -6839,17 +6887,7 @@
           "description": "A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`\"binned\"`).\n\n- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.\n\n- If `\"binned\"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.\n\n__Default value:__ `false`\n\n__See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation."
         },
         "condition": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ConditionalStringValueDef"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalStringValueDef"
-              },
-              "type": "array"
-            }
-          ],
+          "$ref": "#/definitions/ValueOrSignalCondition%3C(string%7Cnull)%3E",
           "description": "One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).\n\n__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)\nsince Vega-Lite only allows at most one encoded field per encoding channel."
         },
         "field": {
@@ -6936,17 +6974,7 @@
           "description": "A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`\"binned\"`).\n\n- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.\n\n- If `\"binned\"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.\n\n__Default value:__ `false`\n\n__See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation."
         },
         "condition": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
-              },
-              "type": "array"
-            }
-          ],
+          "$ref": "#/definitions/ValueOrSignalCondition%3CText%3E",
           "description": "One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).\n\n__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)\nsince Vega-Lite only allows at most one encoded field per encoding channel."
         },
         "field": {
@@ -7023,17 +7051,7 @@
           "description": "A flag for binning a `quantitative` field, [an object defining binning parameters](https://vega.github.io/vega-lite/docs/bin.html#params), or indicating that the data for `x` or `y` channel are binned before they are imported into Vega-Lite (`\"binned\"`).\n\n- If `true`, default [binning parameters](https://vega.github.io/vega-lite/docs/bin.html) will be applied.\n\n- If `\"binned\"`, this indicates that the data for the `x` (or `y`) channel are already binned. You can map the bin-start field to `x` (or `y`) and the bin-end field to `x2` (or `y2`). The scale and axis will be formatted similar to binning in Vega-Lite.  To adjust the axis ticks based on the bin step, you can also set the axis's [`tickMinStep`](https://vega.github.io/vega-lite/docs/axis.html#ticks) property.\n\n__Default value:__ `false`\n\n__See also:__ [`bin`](https://vega.github.io/vega-lite/docs/bin.html) documentation."
         },
         "condition": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/ConditionalValueDef%3Cstring%3E"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalValueDef%3Cstring%3E"
-              },
-              "type": "array"
-            }
-          ],
+          "$ref": "#/definitions/ValueOrSignalCondition%3Cstring%3E",
           "description": "One or more value definition(s) with [a selection or a test predicate](https://vega.github.io/vega-lite/docs/condition.html).\n\n__Note:__ A field definition's `condition` property can only contain [conditional value definitions](https://vega.github.io/vega-lite/docs/condition.html#value)\nsince Vega-Lite only allows at most one encoded field per encoding channel."
         },
         "field": {
@@ -12516,8 +12534,8 @@
     "NumericFieldDefWithCondition": {
       "$ref": "#/definitions/FieldDefWithCondition%3CMarkPropFieldDef%2Cnumber%3E"
     },
-    "NumericValueDefWithCondition": {
-      "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2Cnumber%3E"
+    "NumericValueOrSignalWithCondition": {
+      "$ref": "#/definitions/ValueOrSignalWithCondition%3CMarkPropFieldDef%2Cnumber%3E"
     },
     "OrderFieldDef": {
       "additionalProperties": false,
@@ -15580,12 +15598,127 @@
     "ShapeFieldDefWithCondition": {
       "$ref": "#/definitions/FieldDefWithCondition%3CMarkPropFieldDef%3CTypeForShape%3E%2C(string%7Cnull)%3E"
     },
-    "ShapeValueDefWithCondition": {
-      "$ref": "#/definitions/StringValueDefWithCondition%3CTypeForShape%3E"
+    "ShapeValueOrSignalWithCondition": {
+      "$ref": "#/definitions/StringValueOrSignalWithCondition%3CTypeForShape%3E"
     },
     "SignalRef": {
       "additionalProperties": false,
       "properties": {
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal"
+      ],
+      "type": "object"
+    },
+    "SignalRefWithCondition<MarkPropFieldDef,(Gradient|string|null)>": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(Gradient%7Cstring%7Cnull)%3E"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal"
+      ],
+      "type": "object"
+    },
+    "SignalRefWithCondition<MarkPropFieldDef,(string|null)>": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(string%7Cnull)%3E"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal"
+      ],
+      "type": "object"
+    },
+    "SignalRefWithCondition<MarkPropFieldDef,number>": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ValueOrSignalCondition%3Cnumber%3E"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal"
+      ],
+      "type": "object"
+    },
+    "SignalRefWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef%3CTypeForShape%3E"
+            },
+            {
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(string%7Cnull)%3E"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "signal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "signal"
+      ],
+      "type": "object"
+    },
+    "SignalRefWithCondition<StringFieldDef,Text>": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalStringFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ValueOrSignalCondition%3CText%3E"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
         "signal": {
           "type": "string"
         }
@@ -16147,11 +16280,11 @@
     "StringFieldDefWithCondition": {
       "$ref": "#/definitions/FieldDefWithCondition%3CStringFieldDef%2Cstring%3E"
     },
-    "StringValueDefWithCondition<TypeForShape>": {
-      "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%3CTypeForShape%3E%2C(string%7Cnull)%3E"
+    "StringValueOrSignalWithCondition<TypeForShape>": {
+      "$ref": "#/definitions/ValueOrSignalWithCondition%3CMarkPropFieldDef%3CTypeForShape%3E%2C(string%7Cnull)%3E"
     },
-    "StringValueDefWithCondition": {
-      "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2C(string%7Cnull)%3E"
+    "StringValueOrSignalWithCondition": {
+      "$ref": "#/definitions/ValueOrSignalWithCondition%3CMarkPropFieldDef%2C(string%7Cnull)%3E"
     },
     "StyleConfigIndex": {
       "additionalProperties": {
@@ -16198,8 +16331,8 @@
     "TextFieldDefWithCondition": {
       "$ref": "#/definitions/FieldDefWithCondition%3CStringFieldDef%2CText%3E"
     },
-    "TextValueDefWithCondition": {
-      "$ref": "#/definitions/ValueDefWithCondition%3CStringFieldDef%2CText%3E"
+    "TextValueOrSignalWithCondition": {
+      "$ref": "#/definitions/ValueOrSignalWithCondition%3CStringFieldDef%2CText%3E"
     },
     "TickConfig": {
       "additionalProperties": false,
@@ -18429,13 +18562,7 @@
               "$ref": "#/definitions/ConditionalMarkPropFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
-              },
-              "type": "array"
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(Gradient%7Cstring%7Cnull)%3E"
             }
           ],
           "description": "A field definition or one or more value definition(s) with a selection predicate."
@@ -18467,13 +18594,7 @@
               "$ref": "#/definitions/ConditionalMarkPropFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalStringValueDef"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalStringValueDef"
-              },
-              "type": "array"
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(string%7Cnull)%3E"
             }
           ],
           "description": "A field definition or one or more value definition(s) with a selection predicate."
@@ -18498,13 +18619,7 @@
               "$ref": "#/definitions/ConditionalMarkPropFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalNumberValueDef"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalNumberValueDef"
-              },
-              "type": "array"
+              "$ref": "#/definitions/ValueOrSignalCondition%3Cnumber%3E"
             }
           ],
           "description": "A field definition or one or more value definition(s) with a selection predicate."
@@ -18526,13 +18641,7 @@
               "$ref": "#/definitions/ConditionalMarkPropFieldDef%3CTypeForShape%3E"
             },
             {
-              "$ref": "#/definitions/ConditionalStringValueDef"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalStringValueDef"
-              },
-              "type": "array"
+              "$ref": "#/definitions/ValueOrSignalCondition%3C(string%7Cnull)%3E"
             }
           ],
           "description": "A field definition or one or more value definition(s) with a selection predicate."
@@ -18557,13 +18666,7 @@
               "$ref": "#/definitions/ConditionalStringFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
-              },
-              "type": "array"
+              "$ref": "#/definitions/ValueOrSignalCondition%3CText%3E"
             }
           ],
           "description": "A field definition or one or more value definition(s) with a selection predicate."
@@ -18574,6 +18677,166 @@
         }
       },
       "type": "object"
+    },
+    "ValueOrSignalCondition<(Gradient|string|null)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalValueDef%3C(Gradient%7Cstring%7Cnull)%3E"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSignalRef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalSignalRef"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "ValueOrSignalCondition<(string|null)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalStringValueDef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalStringValueDef"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSignalRef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalSignalRef"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "ValueOrSignalCondition<Text>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalValueDef%3CText%3E"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSignalRef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalSignalRef"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "ValueOrSignalCondition<number>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalNumberValueDef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalNumberValueDef"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSignalRef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalSignalRef"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "ValueOrSignalCondition<string>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalValueDef%3Cstring%3E"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalValueDef%3Cstring%3E"
+          },
+          "type": "array"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSignalRef"
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/ConditionalSignalRef"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "ValueOrSignalWithCondition<MarkPropFieldDef,(Gradient|string|null)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2C(Gradient%7Cstring%7Cnull)%3E"
+        },
+        {
+          "$ref": "#/definitions/SignalRefWithCondition%3CMarkPropFieldDef%2C(Gradient%7Cstring%7Cnull)%3E"
+        }
+      ]
+    },
+    "ValueOrSignalWithCondition<MarkPropFieldDef,(string|null)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2C(string%7Cnull)%3E"
+        },
+        {
+          "$ref": "#/definitions/SignalRefWithCondition%3CMarkPropFieldDef%2C(string%7Cnull)%3E"
+        }
+      ]
+    },
+    "ValueOrSignalWithCondition<MarkPropFieldDef,number>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%2Cnumber%3E"
+        },
+        {
+          "$ref": "#/definitions/SignalRefWithCondition%3CMarkPropFieldDef%2Cnumber%3E"
+        }
+      ]
+    },
+    "ValueOrSignalWithCondition<MarkPropFieldDef<TypeForShape>,(string|null)>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ValueDefWithCondition%3CMarkPropFieldDef%3CTypeForShape%3E%2C(string%7Cnull)%3E"
+        },
+        {
+          "$ref": "#/definitions/SignalRefWithCondition%3CMarkPropFieldDef%3CTypeForShape%3E%2C(string%7Cnull)%3E"
+        }
+      ]
+    },
+    "ValueOrSignalWithCondition<StringFieldDef,Text>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ValueDefWithCondition%3CStringFieldDef%2CText%3E"
+        },
+        {
+          "$ref": "#/definitions/SignalRefWithCondition%3CStringFieldDef%2CText%3E"
+        }
+      ]
     },
     "Vector2<DateTime>": {
       "items": [
