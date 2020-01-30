@@ -726,7 +726,7 @@ export function title(
   }
 }
 
-export function getGuide(fieldDef: TypedFieldDef<string> | SecondaryFieldDef<string>): Guide {
+export function getGuide(fieldDef: TypedFieldDef<string> | SecondaryFieldDef<string>): Guide<any> {
   if (isPositionFieldDef(fieldDef) && fieldDef.axis) {
     return fieldDef.axis;
   } else if (isMarkPropFieldDef(fieldDef) && fieldDef.legend) {

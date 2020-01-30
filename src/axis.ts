@@ -8,15 +8,18 @@ import {
   FontStyle,
   FontWeight,
   LabelOverlap,
+  SignalRef,
   TextBaseline
 } from 'vega';
 import {ConditionalPredicate, Value, ValueDef} from './channeldef';
 import {DateTime} from './datetime';
-import {Guide, GuideEncodingEntry, VlOnlyGuideConfig} from './guide';
+import {Guide, GuideEncodingEntry, TitleMixins, VlOnlyGuideConfig} from './guide';
 import {Flag, keys} from './util';
 import {ExcludeMappedValueRef, VgEncodeChannel} from './vega.schema';
 
 export type BaseAxisNoValueRefs = AxisMixins & ExcludeMappedValueRef<BaseAxis>;
+
+export type SignalAxisProp = 'domainColor' | 'labelColor' | 'gridColor' | 'tickColor' | 'titleColor' | 'title';
 
 export type ConditionalAxisProp =
   | 'labelAlign'
@@ -41,11 +44,15 @@ export type ConditionalAxisProp =
   | 'tickWidth';
 
 export const CONDITIONAL_AXIS_PROP_INDEX: {
-  [prop in keyof BaseAxisNoValueRefs | ConditionalAxisProp]?: {
+  [prop in ConditionalAxisProp | SignalAxisProp]: {
     part: keyof AxisEncode;
     vgProp: VgEncodeChannel;
   } | null; // null if we need to convert condition to signal
 } = {
+  domainColor: {
+    part: 'domain',
+    vgProp: 'stroke'
+  },
   labelAlign: {
     part: 'labels',
     vgProp: 'align'
@@ -119,7 +126,12 @@ export const CONDITIONAL_AXIS_PROP_INDEX: {
   tickWidth: {
     part: 'ticks',
     vgProp: 'strokeWidth'
-  }
+  },
+  titleColor: {
+    part: 'title',
+    vgProp: 'fill'
+  },
+  title: null // title supports signal, let's use it.
 };
 
 export type ConditionalAxisProperty<V extends Value | number[]> = ValueDef<V> & {
@@ -142,30 +154,30 @@ export type ConditionalAxisLabelFontWeight = ConditionalAxisProperty<FontWeight 
 export type ConditionalAxisNumberArray = ConditionalAxisProperty<number[] | null>;
 
 // Vega axis config is the same as Vega axis base. If this is not the case, add specific type.
-export type AxisConfigBaseWithConditional = Omit<BaseAxisNoValueRefs, ConditionalAxisProp> & {
-  // The manual definition below is basically, but we have to do this manually to generate a nice schema
-  // [k in ConditionalAxisProp]?: BaseAxisNoSignals[k] | ConditionalAxisProperty<BaseAxisNoSignals[k] | null>;
-
+export type AxisConfigBaseWithConditionalAndSignal = Omit<BaseAxisNoValueRefs, ConditionalAxisProp | SignalAxisProp> & {
+  domainColor?: BaseAxisNoValueRefs['domainColor'] | SignalRef;
   labelAlign?: BaseAxisNoValueRefs['labelAlign'] | ConditionalAxisLabelAlign;
   labelBaseline?: BaseAxisNoValueRefs['labelBaseline'] | ConditionalAxisLabelBaseline;
-  labelColor?: BaseAxisNoValueRefs['labelColor'] | ConditionalAxisColor;
+  labelColor?: BaseAxisNoValueRefs['labelColor'] | ConditionalAxisColor | SignalRef;
   labelFont?: BaseAxisNoValueRefs['labelFont'] | ConditionalAxisString;
   labelFontSize?: BaseAxisNoValueRefs['labelFontSize'] | ConditionalAxisNumber;
   labelFontStyle?: BaseAxisNoValueRefs['labelFontStyle'] | ConditionalAxisLabelFontStyle;
   labelFontWeight?: BaseAxisNoValueRefs['labelFontWeight'] | ConditionalAxisLabelFontWeight;
   labelOpacity?: BaseAxisNoValueRefs['labelOpacity'] | ConditionalAxisNumber;
   labelPadding?: BaseAxisNoValueRefs['labelPadding'] | ConditionalAxisNumber;
-  gridColor?: BaseAxisNoValueRefs['gridColor'] | ConditionalAxisColor;
+  gridColor?: BaseAxisNoValueRefs['gridColor'] | ConditionalAxisColor | SignalRef;
   gridDash?: BaseAxisNoValueRefs['gridDash'] | ConditionalAxisNumberArray;
   gridDashOffset?: BaseAxisNoValueRefs['gridDashOffset'] | ConditionalAxisNumber;
   gridOpacity?: BaseAxisNoValueRefs['gridOpacity'] | ConditionalAxisNumber;
   gridWidth?: BaseAxisNoValueRefs['gridWidth'] | ConditionalAxisNumber;
-  tickColor?: BaseAxisNoValueRefs['tickColor'] | ConditionalAxisColor;
+  tickColor?: BaseAxisNoValueRefs['tickColor'] | ConditionalAxisColor | SignalRef;
   tickDash?: BaseAxisNoValueRefs['tickDash'] | ConditionalAxisNumberArray;
   tickDashOffset?: BaseAxisNoValueRefs['tickDashOffset'] | ConditionalAxisNumber;
   tickOpacity?: BaseAxisNoValueRefs['tickOpacity'] | ConditionalAxisNumber;
   tickSize?: BaseAxisNoValueRefs['tickSize'] | ConditionalAxisNumber;
   tickWidth?: BaseAxisNoValueRefs['tickWidth'] | ConditionalAxisNumber;
+  titleColor?: BaseAxisNoValueRefs['titleColor'] | SignalRef;
+  title?: TitleMixins['title'] | SignalRef;
 };
 
 // Change comments to be Vega-Lite specific
@@ -201,9 +213,9 @@ export interface AxisOrientMixins {
   orient?: AxisOrient;
 }
 
-export type AxisConfig = VlOnlyGuideConfig & AxisOrientMixins & AxisConfigBaseWithConditional;
+export type AxisConfig = VlOnlyGuideConfig & AxisOrientMixins & AxisConfigBaseWithConditionalAndSignal;
 
-export interface Axis extends AxisOrientMixins, AxisConfigBaseWithConditional, Guide {
+export interface Axis extends AxisOrientMixins, AxisConfigBaseWithConditionalAndSignal, Guide<SignalRef> {
   /**
    * [Vega expression](https://vega.github.io/vega/docs/expressions/) for customizing labels.
    *
