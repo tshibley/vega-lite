@@ -177,7 +177,7 @@ export type AxisConfigBaseWithConditionalAndSignal = Omit<BaseAxisNoValueRefs, C
   tickSize?: BaseAxisNoValueRefs['tickSize'] | ConditionalAxisNumber;
   tickWidth?: BaseAxisNoValueRefs['tickWidth'] | ConditionalAxisNumber;
   titleColor?: BaseAxisNoValueRefs['titleColor'] | SignalRef;
-  title?: TitleMixins['title'] | SignalRef;
+  title?: TitleMixins['title'];
 };
 
 // Change comments to be Vega-Lite specific
@@ -215,7 +215,7 @@ export interface AxisOrientMixins {
 
 export type AxisConfig = VlOnlyGuideConfig & AxisOrientMixins & AxisConfigBaseWithConditionalAndSignal;
 
-export interface Axis extends AxisOrientMixins, AxisConfigBaseWithConditionalAndSignal, Guide<SignalRef> {
+export interface Axis extends AxisOrientMixins, AxisConfigBaseWithConditionalAndSignal, Guide {
   /**
    * [Vega expression](https://vega.github.io/vega/docs/expressions/) for customizing labels.
    *
